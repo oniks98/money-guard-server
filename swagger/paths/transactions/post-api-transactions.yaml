@@ -1,0 +1,28 @@
+tags:
+  - Transactions
+summary: Create a new transaction
+operationId: createTransaction
+description: Create a new transaction record for the authenticated user.
+security:
+  - bearerAuth: []
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: ../../components/schemas/createTransactionRequest.yaml
+responses:
+  '201':
+    description: Successful creation of a new transaction
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/createTransactionResponse.yaml'
+  '400':
+    $ref: '../../components/responses/400.yaml'
+  '401':
+    $ref: '../../components/responses/401.yaml'
+  '429':
+    $ref: '../../components/responses/429.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'

@@ -1,0 +1,52 @@
+tags:
+  - Auth
+summary: User registration
+operationId: register
+description: 'User registration with provided credentials'
+security: []
+requestBody:
+  content:
+    application/json:
+      schema:
+        required:
+          - name
+          - email
+          - password
+        properties:
+          name:
+            type: string
+            example: 'Taras Shevchenko'
+          email:
+            type: string
+            format: email
+            example: 'Taras333@gmail.com'
+          password:
+            type: string
+            minLength: 8
+            maxLength: 64
+            example: '12345678'
+responses:
+  '201':
+    description: 'User registration'
+    content:
+      application/json:
+        schema:
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: '201'
+            message:
+              type: string
+              example: 'Successfully registered a user!'
+            data:
+              $ref: '../../components/schemas/users.yaml'
+  '409':
+    $ref: '../../components/responses/409.yaml'
+  '429':
+    $ref: '../../components/responses/429.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'

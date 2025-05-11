@@ -1,0 +1,16 @@
+tags:
+  - Auth
+summary: Log Out User
+operationId: logout
+description: 'Log Out from account.'
+security: []
+responses:
+  '204':
+    description: 'No content'
+  '401':
+    $ref: '../../components/responses/401.yaml'
+    description: 'User is not authenticated'
+  '429':
+    $ref: '../../components/responses/429.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'
